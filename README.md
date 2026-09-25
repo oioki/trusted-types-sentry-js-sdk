@@ -1,0 +1,1 @@
+# trusted-types-sentry-js-sdk
