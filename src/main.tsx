@@ -7,7 +7,7 @@ import {createRoot} from 'react-dom/client';
 import {App} from './App';
 
 Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN ?? 'https://examplePublicKey@o0.ingest.sentry.io/0',
+  dsn: 'https://be6c1a7c1f04c2e2a4e030312c94db3e@o546955.ingest.us.sentry.io/4512147092144128',
   integrations: [
     Sentry.browserTracingIntegration(),
     Sentry.replayIntegration(),

@@ -15,8 +15,8 @@ npm run preview:enforce    # CSP enforced
 ```
 
 Open http://localhost:4173/ and use the buttons. Violations are listed on the
-page as they happen. `VITE_SENTRY_DSN` sets a real DSN at build time; the
-default is a placeholder.
+page as they happen, and events, replays and feedback go to the demo's Sentry
+project.
 
 `npm run check` and `npm run check:enforce` do the same in headless Chrome and
 print the results. Set `CHROME_PATH` if Chrome is not in `/Applications`.
