@@ -3,7 +3,10 @@ import {defineConfig} from 'vite';
 
 const enforce = process.env.TT_MODE === 'enforce';
 
-const csp = "require-trusted-types-for 'script'";
+const reportUri =
+  'https://o546955.ingest.us.sentry.io/api/4512147092144128/security/?sentry_key=be6c1a7c1f04c2e2a4e030312c94db3e';
+
+const csp = `require-trusted-types-for 'script'; report-uri ${reportUri}`;
 
 export default defineConfig({
   plugins: [react()],

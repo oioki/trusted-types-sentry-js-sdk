@@ -26,6 +26,12 @@ try {
   const page = await browser.newPage();
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
+  const reports = [];
+  page.on('response', response => {
+    if (response.url().includes('/security/')) {
+      reports.push(response.status());
+    }
+  });
 
   await page.goto(URL, {waitUntil: 'networkidle0'});
   await sleep(1000);
@@ -41,6 +47,7 @@ try {
   console.log(`mode: ${process.env.TT_MODE === 'enforce' ? 'enforce' : 'report-only'}`);
   console.log(`${violations.length} violations`);
   console.log(`feedback form rendered: ${feedbackRendered}`);
+  console.log(`reports sent to Sentry: ${reports.length} (statuses: ${reports.join(', ')})`);
   console.table(violations.map(({sink, sample, source}) => ({sink, sample, source})));
   if (errors.length) {
     console.log('page errors:');
