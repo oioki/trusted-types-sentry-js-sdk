@@ -30,7 +30,7 @@ try {
   await page.goto(URL, {waitUntil: 'networkidle0'});
   await sleep(1000);
   for (const id of ['report-dialog', 'lazy-load', 'feedback']) {
-    await page.click(`#${id}`);
+    await page.$eval(`#${id}`, button => button.click());
     await sleep(1500);
   }
 

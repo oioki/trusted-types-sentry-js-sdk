@@ -28,8 +28,9 @@ print the results. Set `CHROME_PATH` if Chrome is not in `/Applications`.
 | `new Worker(blob:)` | Replay compression worker, on page load | SDK catches the error | `replayIntegration({useCompression: false})` |
 | `Element.innerHTML` | Feedback form (Sentry logo) | Form doesn't render | `feedbackIntegration({showBranding: false})` |
 | `HTMLScriptElement.src` | `showReportDialog()` | Throws, so no dialog | None |
+| `Element.innerHTML` | Report dialog script (served by Sentry), once loaded | Never reached, since the script is blocked | None |
 | `HTMLScriptElement.src` | `lazyLoadIntegration()` | Throws, so the integration doesn't load | None |
 
-With both workarounds applied, the two `script.src` sinks remain. The only way
-around them is a pass-through `default` policy, which defeats the point of
+With both workarounds applied, the two `script.src` sinks remain, and the
+report dialog would still fail after loading. The only way around them is a pass-through `default` policy, which defeats the point of
 Trusted Types.
